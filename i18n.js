@@ -13,6 +13,8 @@
     'nav.language': 'Language',
     'nav.modes': 'Game modes',
     'nav.features': 'Highlights',
+    'nav.privacy': 'Privacy',
+    'nav.privacyUrl': 'privacy.html',
     'hero.eyebrow': 'A puzzle game for Mac, iPhone and iPad',
     // The brand stays German everywhere; English visitors see what it means.
     'hero.alias': 'Line Magic',

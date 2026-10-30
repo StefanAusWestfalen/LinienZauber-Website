@@ -68,7 +68,7 @@
     'feature.language.text': 'The whole game is available in German and English.',
     'feature.calm.title': 'Calm and fair',
     'feature.calm.text': 'No time limit: undo costs five seconds on the clock, a hint thirty – and every restart keeps your best time.',
-    'footer.credit': 'A game by Stefan Opfermann · © Stefan Opfermann 2026',
+    'footer.credit': 'A game by Stefan Opfermann · © Stefan Opfermann 2026 · Updated 30 Oct 2026, 17:23 CET',
     'footer.privacy': 'This page sets no cookies and loads nothing from other servers.'
   };
 

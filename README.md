@@ -1,4 +1,4 @@
-# Linienzauber – Website
+# LinienZauber – Website
 
 Ein statischer One-Pager auf Deutsch und Englisch: reines HTML, CSS und ein kleines Skript, ohne Build-Schritt, ohne Cookies und ohne fremde Server (Roboto liegt in `assets/fonts`, OFL-Lizenz).
 
@@ -18,7 +18,7 @@ Die Seite wählt die Sprache selbst, bevor sie gezeichnet wird:
 2. sonst die frühere Wahl über den Schalter **DE / EN** (im Browser gespeichert),
 3. sonst die Browsersprachen: die erste deutsche oder englische gewinnt, jede andere Sprache bekommt Englisch.
 
-Der Name bleibt in jeder Sprache **Linienzauber**, wie im Spiel und im App Store. Die englische Fassung zeigt unter dem Titel nur, was er bedeutet: „Line Magic“ (`hero.alias`, auf Deutsch leer und ausgeblendet).
+Der Name bleibt in jeder Sprache **LinienZauber**, wie im Spiel und im App Store. Die englische Fassung zeigt unter dem Titel nur, was er bedeutet: „Line Magic“ (`hero.alias`, auf Deutsch leer und ausgeblendet).
 
 Neue Texte bekommen im HTML ein `data-i18n="schlüssel"` (Attribute: `data-i18n-attr="alt:schlüssel"`) und in `i18n.js` die englische Fassung unter demselben Schlüssel.
 

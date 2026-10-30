@@ -5,8 +5,8 @@
   'use strict';
 
   var english = {
-    'meta.title': 'Linienzauber (Line Magic) – Experience graph theory through play',
-    'meta.description': 'Linienzauber is a calm puzzle game for Mac, iPhone and iPad: Euler trails, Hamilton paths, shortest paths, Steiner trees, the travelling salesman, path finder, four-colour magic and planar graphs in glowing neon worlds.',
+    'meta.title': 'LinienZauber (Line Magic) – Experience graph theory through play',
+    'meta.description': 'LinienZauber is a calm puzzle game for Mac, iPhone and iPad: Euler trails, Hamilton paths, shortest paths, Steiner trees, the travelling salesman, path finder, four-colour magic and planar graphs in glowing neon worlds.',
     'meta.og': 'Every edge. One stroke. Your path. Experience graph theory through play.',
     'nav.skip': 'Skip to content',
     'nav.label': 'Main navigation',
@@ -22,7 +22,7 @@
     'hero.more': 'What makes it special',
     'hero.animation': 'The house of Santa Claus is drawn in a single stroke',
     'hero.caption': 'The house of Santa Claus – eight edges, one stroke.',
-    'shot.intro': 'Linienzauber title screen: a glowing figure above an evening city of towers shaped like the house of Santa Claus, with a full moon',
+    'shot.intro': 'LinienZauber title screen: a glowing figure above an evening city of towers shaped like the house of Santa Claus, with a full moon',
     'shot.modes': 'The mode selection with eight cards: Euler trails, Shortest paths, Hamilton paths, Steiner trees, Travelling salesman, Path finder, Colouring and Planar graphs',
     'shot.euler': 'Figure overview of the Euler trails with the Moroccan star, the house of Santa Claus and more figures',
     'shot.paths': 'A level of the route planner: a road map with start S, goal Z, closed roads and the route driven so far',
@@ -33,18 +33,18 @@
     'shot.colour': 'Four-colour magic: a solved triangle with a blue, a pink and a yellow node in front of a flower meadow at sunrise',
     'shot.planar': 'Planar graphs: a tangled pentagon whose crossing edges glow red',
     'about.title': 'Easy to learn, beautiful to master',
-    'about.text': 'Linienzauber is a calm puzzle game for Mac, iPhone and iPad. Glowing glass tubes connect nodes into figures – from the classic “house of Santa Claus” to winding star paths. The task sounds simple: draw every line exactly once without lifting your finger. Behind it lies real mathematics that you discover along the way.',
+    'about.text': 'LinienZauber is a calm puzzle game for Mac, iPhone and iPad. Glowing glass tubes connect nodes into figures – from the classic “house of Santa Claus” to winding star paths. The task sounds simple: draw every line exactly once without lifting your finger. Behind it lies real mathematics that you discover along the way.',
     'about.modes': 'game modes',
     'about.levels': 'levels',
     'about.platforms': 'platforms',
     'modes.title': 'Eight game modes',
     'modes.lead': 'Eight kinds of puzzles from graph theory, each with its own world, its own music and its own figure overview.',
     'mode.euler.title': 'Euler trails',
-    'mode.euler.text': '58 figures in four worlds: Classics, Advanced, Star paths and Connections. Use every edge exactly once. Crossings are not nodes, and Linienzauber warns you before you walk into a dead end.',
+    'mode.euler.text': '58 figures in four worlds: Classics, Advanced, Star paths and Connections. Use every edge exactly once. Crossings are not nodes, and LinienZauber warns you before you walk into a dead end.',
     'mode.paths.title': 'Shortest paths',
     'mode.paths.text': '40 road maps like a route planner, the second half on real German regions from the Ruhr to Thuringia: a road is as long as it is drawn. Plan the shortest route from S to Z, with stops on the way and around roadworks – with haptics, horn and engine sounds.',
     'mode.hamilton.title': 'Hamilton paths',
-    'mode.hamilton.text': '20 graphs from the triangle to the dodecahedron of Hamilton’s own game. Visit every node exactly once – sometimes returning to the start. Linienzauber spots a dead end before you walk into it.',
+    'mode.hamilton.text': '20 graphs from the triangle to the dodecahedron of Hamilton’s own game. Visit every node exactly once – sometimes returning to the start. LinienZauber spots a dead end before you walk into it.',
     'mode.steiner.title': 'Steiner trees',
     'mode.steiner.text': '20 grids with components and pins in several colours. Connect all pins of the same colour into a minimal, branching net – pull, shift and straighten traces just like PCB layout on a real circuit board.',
     'mode.tsp.title': 'Travelling salesman',
@@ -72,7 +72,7 @@
     'footer.privacy': 'This page sets no cookies and loads nothing from other servers.'
   };
 
-  var storageKey = 'linienzauber-lang';
+  var storageKey = 'LinienZauber-lang';
   var textNodes = Array.prototype.slice.call(document.querySelectorAll('[data-i18n]'));
   var attrNodes = Array.prototype.slice.call(document.querySelectorAll('[data-i18n-attr]'));
   // The German originals, read once from the page, so switching back needs no second copy.

@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title data-i18n="meta.title">Linienzauber – Graphentheorie spielerisch erfahren</title>
-  <meta name="description" content="Linienzauber ist ein ruhiges Denkspiel für Mac, iPhone und iPad: Eulerzüge, Hamiltonzüge, kürzeste Wege, Steinerbäume, Handlungsreisender, Pfadfinder, Vierfarben-Zauber und planare Graphen in leuchtenden Neon-Welten." data-i18n-attr="content:meta.description">
-  <meta property="og:title" content="Linienzauber" >
+  <title data-i18n="meta.title">LinienZauber – Graphentheorie spielerisch erfahren</title>
+  <meta name="description" content="LinienZauber ist ein ruhiges Denkspiel für Mac, iPhone und iPad: Eulerzüge, Hamiltonzüge, kürzeste Wege, Steinerbäume, Handlungsreisender, Pfadfinder, Vierfarben-Zauber und planare Graphen in leuchtenden Neon-Welten." data-i18n-attr="content:meta.description">
+  <meta property="og:title" content="LinienZauber" >
   <meta property="og:description" content="Jede Kante. Ein Zug. Dein Weg. Graphentheorie spielerisch erfahren." data-i18n-attr="content:meta.og">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#070a16">
@@ -17,7 +17,7 @@
     // languages (the first German or English one wins, otherwise English). i18n.js then sets the texts.
     (function () {
       var lang = null;
-      try { lang = new URLSearchParams(location.search).get('lang') || localStorage.getItem('linienzauber-lang'); } catch (e) {}
+      try { lang = new URLSearchParams(location.search).get('lang') || localStorage.getItem('LinienZauber-lang'); } catch (e) {}
       if (lang !== 'de' && lang !== 'en') {
         var list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'de'];
         lang = 'en';
@@ -41,9 +41,9 @@
 
   <header class="site-header">
     <div class="wrap header-row">
-      <a class="brand" href="#top" aria-label="Linienzauber">
+      <a class="brand" href="#top" aria-label="LinienZauber">
         <img src="assets/img/favicon-64.png" width="32" height="32" alt="">
-        <span>Linienzauber</span>
+        <span>LinienZauber</span>
       </a>
       <nav class="site-nav" aria-label="Hauptnavigation" data-i18n-attr="aria-label:nav.label">
         <a href="#modi" data-i18n="nav.modes">Spielmodi</a>
@@ -61,7 +61,7 @@
       <div class="wrap hero-grid">
         <div class="hero-text">
           <p class="eyebrow" data-i18n="hero.eyebrow">Ein Denkspiel für Mac, iPhone und iPad</p>
-          <h1>Linienzauber</h1>
+          <h1>LinienZauber</h1>
           <p class="alias" data-i18n="hero.alias"></p>
           <p class="tagline" data-i18n="hero.tagline">Jede Kante. Ein Zug. Dein Weg.</p>
           <p class="lead" data-i18n="hero.lead">Graphentheorie spielerisch erfahren.</p>
@@ -93,7 +93,7 @@
       <div class="wrap">
         <figure class="shot hero-shot">
           <img src="assets/img/01-intro-abendstadt.jpg" width="1200" height="824"
-               alt="Titelbild von Linienzauber: eine leuchtende Figur über einer Abendstadt aus Hochhäusern im Stil des Hauses vom Nikolaus, mit Vollmond"
+               alt="Titelbild von LinienZauber: eine leuchtende Figur über einer Abendstadt aus Hochhäusern im Stil des Hauses vom Nikolaus, mit Vollmond"
                data-i18n-attr="alt:shot.intro">
         </figure>
       </div>
@@ -103,7 +103,7 @@
       <div class="wrap about-grid">
         <div>
           <h2 data-i18n="about.title">Einfach zu lernen, schön zu meistern</h2>
-          <p data-i18n="about.text">Linienzauber ist ein ruhiges Denkspiel für Mac, iPhone und iPad. Leuchtende Glasröhren verbinden Knoten zu Figuren – vom Haus vom Nikolaus bis zum Sternenpfad. Deine Aufgabe klingt einfach: Zeichne jede Linie genau einmal, ohne abzusetzen. Dahinter steckt echte Mathematik, die du ganz nebenbei erlebst.</p>
+          <p data-i18n="about.text">LinienZauber ist ein ruhiges Denkspiel für Mac, iPhone und iPad. Leuchtende Glasröhren verbinden Knoten zu Figuren – vom Haus vom Nikolaus bis zum Sternenpfad. Deine Aufgabe klingt einfach: Zeichne jede Linie genau einmal, ohne abzusetzen. Dahinter steckt echte Mathematik, die du ganz nebenbei erlebst.</p>
           <ul class="facts">
             <li><strong>8</strong> <span data-i18n="about.modes">Spielmodi</span></li>
             <li><strong>218</strong> <span data-i18n="about.levels">Level</span></li>
@@ -129,7 +129,7 @@
                  data-i18n-attr="alt:shot.euler">
             <div class="mode-body">
               <h3 data-i18n="mode.euler.title">Eulerzüge</h3>
-              <p data-i18n="mode.euler.text">58 Figuren in vier Welten: Klassiker, Fortgeschritten, Sternenpfade und Verbindungen. Benutze jede Kante genau einmal. Kreuzungen sind keine Knoten, und Linienzauber warnt dich, bevor du in eine Sackgasse läufst.</p>
+              <p data-i18n="mode.euler.text">58 Figuren in vier Welten: Klassiker, Fortgeschritten, Sternenpfade und Verbindungen. Benutze jede Kante genau einmal. Kreuzungen sind keine Knoten, und LinienZauber warnt dich, bevor du in eine Sackgasse läufst.</p>
             </div>
           </article>
           <article class="mode" style="--accent: var(--gold)">
@@ -147,7 +147,7 @@
                  data-i18n-attr="alt:shot.hamilton">
             <div class="mode-body">
               <h3 data-i18n="mode.hamilton.title">Hamiltonzüge</h3>
-              <p data-i18n="mode.hamilton.text">20 Graphen vom Dreieck bis zum Dodekaeder aus Hamiltons eigenem Spiel. Besuche jeden Knoten genau einmal – manchmal mit Rückkehr zum Start. Eine Sackgasse erkennt Linienzauber, bevor du sie betrittst.</p>
+              <p data-i18n="mode.hamilton.text">20 Graphen vom Dreieck bis zum Dodekaeder aus Hamiltons eigenem Spiel. Besuche jeden Knoten genau einmal – manchmal mit Rückkehr zum Start. Eine Sackgasse erkennt LinienZauber, bevor du sie betrittst.</p>
             </div>
           </article>
           <article class="mode" style="--accent: var(--cyan)">
@@ -242,7 +242,7 @@
     <div class="wrap footer-row">
       <div class="brand">
         <img src="assets/img/favicon-64.png" width="28" height="28" alt="">
-        <span>Linienzauber</span>
+        <span>LinienZauber</span>
       </div>
       <p data-i18n="footer.credit">Ein Spiel von Stefan Opfermann · © Stefan Opfermann 2026</p>
       <p class="quiet" data-i18n="footer.privacy">Diese Seite setzt keine Cookies und lädt nichts von fremden Servern.</p>

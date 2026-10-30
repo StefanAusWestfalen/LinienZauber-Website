@@ -20,6 +20,7 @@
     'hero.lead': 'Experience graph theory through play.',
     'hero.cta': 'Discover the game modes',
     'hero.more': 'What makes it special',
+    'hero.testflight': 'Try it in TestFlight',
     'hero.animation': 'The house of Santa Claus is drawn in a single stroke',
     'hero.caption': 'The house of Santa Claus – eight edges, one stroke.',
     'shot.intro': 'LinienZauber title screen: a glowing figure above an evening city of towers shaped like the house of Santa Claus, with a full moon',

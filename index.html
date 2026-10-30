@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="meta.title">Linienzauber – Graphentheorie spielerisch erfahren</title>
+  <meta name="description" content="Linienzauber ist ein ruhiges Denkspiel für Mac, iPhone und iPad: Eulerzüge, Hamiltonzüge, kürzeste Wege, Steinerbäume, Handlungsreisender, Pfadfinder, Vierfarben-Zauber und planare Graphen in leuchtenden Neon-Welten." data-i18n-attr="content:meta.description">
+  <meta property="og:title" content="Linienzauber" >
+  <meta property="og:description" content="Jede Kante. Ein Zug. Dein Weg. Graphentheorie spielerisch erfahren." data-i18n-attr="content:meta.og">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#070a16">
+  <link rel="icon" type="image/png" href="assets/img/favicon-64.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Chooses the language before the first paint: ?lang=, then the visitor's earlier choice, then the browser's
+    // languages (the first German or English one wins, otherwise English). i18n.js then sets the texts.
+    (function () {
+      var lang = null;
+      try { lang = new URLSearchParams(location.search).get('lang') || localStorage.getItem('linienzauber-lang'); } catch (e) {}
+      if (lang !== 'de' && lang !== 'en') {
+        var list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'de'];
+        lang = 'en';
+        for (var i = 0; i < list.length; i++) {
+          if (/^de\b/i.test(list[i])) { lang = 'de'; break; }
+          if (/^en\b/i.test(list[i])) { break; }
+        }
+      }
+      document.documentElement.lang = lang;
+      if (lang === 'en') {
+        // Hide the German texts until i18n.js has replaced them; never longer than a moment.
+        document.documentElement.classList.add('i18n-pending');
+        setTimeout(function () { document.documentElement.classList.remove('i18n-pending'); }, 1200);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#inhalt" data-i18n="nav.skip">Zum Inhalt springen</a>
+  <div class="sky" aria-hidden="true"><div class="stars stars-far"></div><div class="stars stars-near"></div></div>
+
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="#top" aria-label="Linienzauber">
+        <img src="assets/img/favicon-64.png" width="32" height="32" alt="">
+        <span>Linienzauber</span>
+      </a>
+      <nav class="site-nav" aria-label="Hauptnavigation" data-i18n-attr="aria-label:nav.label">
+        <a href="#modi" data-i18n="nav.modes">Spielmodi</a>
+        <a href="#besonderheiten" data-i18n="nav.features">Besonderheiten</a>
+      </nav>
+      <div class="lang-switch" role="group" aria-label="Sprache" data-i18n-attr="aria-label:nav.language">
+        <button type="button" data-lang="de" aria-pressed="true" lang="de">DE</button>
+        <button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="inhalt">
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow" data-i18n="hero.eyebrow">Ein Denkspiel für Mac, iPhone und iPad</p>
+          <h1>Linienzauber</h1>
+          <p class="alias" data-i18n="hero.alias"></p>
+          <p class="tagline" data-i18n="hero.tagline">Jede Kante. Ein Zug. Dein Weg.</p>
+          <p class="lead" data-i18n="hero.lead">Graphentheorie spielerisch erfahren.</p>
+          <div class="actions">
+            <a class="button primary" href="#modi" data-i18n="hero.cta">Spielmodi entdecken</a>
+            <a class="button" href="#besonderheiten" data-i18n="hero.more">Was es besonders macht</a>
+          </div>
+        </div>
+        <figure class="house" role="img" aria-label="Das Haus vom Nikolaus wird in einem Zug gezeichnet" data-i18n-attr="aria-label:hero.animation">
+          <svg viewBox="0 0 240 240" aria-hidden="true">
+            <defs>
+              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="3.2" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <!-- Every edge as a dim glass tube, then the Euler trail A–C–E–D–C–B–D–A–B drawn over it. -->
+            <path class="tube" d="M50 200 L50 100 L120 35 L190 100 L50 100 L190 200 L190 100 L50 200 L190 200"/>
+            <path class="trail" pathLength="100" filter="url(#glow)" d="M50 200 L50 100 L120 35 L190 100 L50 100 L190 200 L190 100 L50 200 L190 200"/>
+            <g class="nodes">
+              <circle cx="50" cy="200" r="7"/><circle cx="190" cy="200" r="7"/><circle cx="50" cy="100" r="7"/>
+              <circle cx="190" cy="100" r="7"/><circle cx="120" cy="35" r="7"/>
+            </g>
+            <circle class="head" r="8" filter="url(#glow)"/>
+          </svg>
+          <figcaption data-i18n="hero.caption">Das Haus vom Nikolaus – acht Kanten, ein Zug.</figcaption>
+        </figure>
+      </div>
+      <div class="wrap">
+        <figure class="shot hero-shot">
+          <img src="assets/img/01-intro-abendstadt.jpg" width="1200" height="824"
+               alt="Titelbild von Linienzauber: eine leuchtende Figur über einer Abendstadt aus Hochhäusern im Stil des Hauses vom Nikolaus, mit Vollmond"
+               data-i18n-attr="alt:shot.intro">
+        </figure>
+      </div>
+    </section>
+
+    <section class="about">
+      <div class="wrap about-grid">
+        <div>
+          <h2 data-i18n="about.title">Einfach zu lernen, schön zu meistern</h2>
+          <p data-i18n="about.text">Linienzauber ist ein ruhiges Denkspiel für Mac, iPhone und iPad. Leuchtende Glasröhren verbinden Knoten zu Figuren – vom Haus vom Nikolaus bis zum Sternenpfad. Deine Aufgabe klingt einfach: Zeichne jede Linie genau einmal, ohne abzusetzen. Dahinter steckt echte Mathematik, die du ganz nebenbei erlebst.</p>
+          <ul class="facts">
+            <li><strong>8</strong> <span data-i18n="about.modes">Spielmodi</span></li>
+            <li><strong>218</strong> <span data-i18n="about.levels">Level</span></li>
+            <li><strong>3</strong> <span data-i18n="about.platforms">Plattformen</span></li>
+          </ul>
+        </div>
+        <figure class="shot">
+          <img src="assets/img/02-modi.jpg" width="1200" height="824" loading="lazy"
+               alt="Die Modus-Auswahl mit acht Karten: Eulerzüge, Kürzeste Wege, Hamiltonzüge, Steinerbäume, Handlungsreisender, Pfadfinder, Einfärben und Planare Graphen"
+               data-i18n-attr="alt:shot.modes">
+        </figure>
+      </div>
+    </section>
+
+    <section class="modes" id="modi">
+      <div class="wrap">
+        <h2 data-i18n="modes.title">Acht Spielmodi</h2>
+        <p class="section-lead" data-i18n="modes.lead">Acht Rätselarten aus der Graphentheorie, jede mit eigener Welt, eigener Musik und eigener Figurenübersicht.</p>
+        <div class="mode-grid">
+          <article class="mode" style="--accent: var(--cyan)">
+            <img src="assets/img/03-eulerzuege.jpg" width="1200" height="824" loading="lazy"
+                 alt="Figurenübersicht der Eulerzüge mit Marokkanischem Stern, Haus vom Nikolaus und weiteren Figuren"
+                 data-i18n-attr="alt:shot.euler">
+            <div class="mode-body">
+              <h3 data-i18n="mode.euler.title">Eulerzüge</h3>
+              <p data-i18n="mode.euler.text">58 Figuren in vier Welten: Klassiker, Fortgeschritten, Sternenpfade und Verbindungen. Benutze jede Kante genau einmal. Kreuzungen sind keine Knoten, und Linienzauber warnt dich, bevor du in eine Sackgasse läufst.</p>
+            </div>
+          </article>
+          <article class="mode" style="--accent: var(--gold)">
+            <img src="assets/img/04-kuerzeste-wege.jpg" width="1200" height="824" loading="lazy"
+                 alt="Ein Level des Routenplaners: eine Straßenkarte mit Start S, Ziel Z, gesperrten Straßen und der gefahrenen Route"
+                 data-i18n-attr="alt:shot.paths">
+            <div class="mode-body">
+              <h3 data-i18n="mode.paths.title">Kürzeste Wege</h3>
+              <p data-i18n="mode.paths.text">40 Straßenkarten wie ein Routenplaner, die zweite Hälfte auf echten deutschen Regionen von der Ruhr bis Thüringen: Eine Straße ist so lang, wie sie gezeichnet ist. Plane die kürzeste Route von S nach Z, mit Stopps unterwegs und um Baustellen herum – mit Haptik, Hupe und Motorsound.</p>
+            </div>
+          </article>
+          <article class="mode" style="--accent: var(--violet)">
+            <img src="assets/img/07-hamiltonzuege.jpg" width="1200" height="824" loading="lazy"
+                 alt="Figurenübersicht der Hamiltonzüge mit Dreieck mit Fahne, Haus, Rad, Leiter und Stern"
+                 data-i18n-attr="alt:shot.hamilton">
+            <div class="mode-body">
+              <h3 data-i18n="mode.hamilton.title">Hamiltonzüge</h3>
+              <p data-i18n="mode.hamilton.text">20 Graphen vom Dreieck bis zum Dodekaeder aus Hamiltons eigenem Spiel. Besuche jeden Knoten genau einmal – manchmal mit Rückkehr zum Start. Eine Sackgasse erkennt Linienzauber, bevor du sie betrittst.</p>
+            </div>
+          </article>
+          <article class="mode" style="--accent: var(--cyan)">
+            <img src="assets/img/10-pfadfinder.jpg" width="1200" height="824" loading="lazy"
+                 alt="Pfadfinder: ein 5-mal-5-Feld mit roten, blauen und grünen Punktepaaren"
+                 data-i18n-attr="alt:shot.pathfinder">
+            <div class="mode-body">
+              <h3 data-i18n="mode.pathfinder.title">Pfadfinder</h3>
+              <p data-i18n="mode.pathfinder.text">20 Felder bis 8 × 8 mit Paaren gleicher Farbe. Verbinde jedes Paar durch einen Pfad, ziehe und verschiebe Kurven nach Belieben, ohne dass sich zwei Pfade berühren. Jedes Level hat genau eine Lösung.</p>
+            </div>
+          </article>
+          <article class="mode" style="--accent: var(--gold)">
+            <img src="assets/img/09-handlungsreisender.jpg" width="1200" height="824" loading="lazy"
+                 alt="Handlungsreisender: fünf Städte an der Ruhr auf einer Karte, die in einer Rundreise besucht werden sollen"
+                 data-i18n-attr="alt:shot.tsp">
+            <div class="mode-body">
+              <h3 data-i18n="mode.tsp.title">Handlungsreisender</h3>
+              <p data-i18n="mode.tsp.text">20 Rundreisen durch echte deutsche Städte, von fünf bis vierzehn Orten. Besuche jede Stadt einmal und fahre zurück zum Start – auf der kürzesten Rundreise. Wer immer zur nächsten Stadt fährt, verliert.</p>
+            </div>
+          </article>
+          <article class="mode" style="--accent: var(--green)">
+            <img src="assets/img/08-steinerbaeume.jpg" width="1200" height="824" loading="lazy"
+                 alt="Steinerbäume: ein Raster mit roten und blauen Punkten, die je zu einem Netz verbunden werden sollen"
+                 data-i18n-attr="alt:shot.steiner">
+            <div class="mode-body">
+              <h3 data-i18n="mode.steiner.title">Steinerbäume</h3>
+              <p data-i18n="mode.steiner.text">20 Raster mit Bauteilen und Pins in mehreren Farben. Verbinde alle Pins gleicher Farbe zu einem minimalen, verzweigten Netz – ziehe, verschiebe und begradige Leitungen wie beim PCB-Layout auf einer echten Platine.</p>
+            </div>
+          </article>
+          <article class="mode" style="--accent: var(--magenta)">
+            <img src="assets/img/05-einfaerben.jpg" width="1200" height="824" loading="lazy"
+                 alt="Vierfarben-Zauber: ein gelöstes Dreieck mit blauem, pinkem und gelbem Knoten vor einer Blumenwiese bei Sonnenaufgang"
+                 data-i18n-attr="alt:shot.colour">
+            <div class="mode-body">
+              <h3 data-i18n="mode.colour.title">Vierfarben-Zauber</h3>
+              <p data-i18n="mode.colour.text">20 Level mit vier Neonfarben. Färbe die Knoten so, dass keine Kante zwei gleiche Farben verbindet. Als Farben-Meister schaffst du es mit der kleinstmöglichen Zahl an Farben.</p>
+            </div>
+          </article>
+          <article class="mode" style="--accent: var(--green)">
+            <img src="assets/img/06-planare-graphen.jpg" width="1200" height="824" loading="lazy"
+                 alt="Planare Graphen: ein verknotetes Fünfeck, dessen sich kreuzende Kanten rot leuchten"
+                 data-i18n-attr="alt:shot.planar">
+            <div class="mode-body">
+              <h3 data-i18n="mode.planar.title">Planare Graphen – Entwirren</h3>
+              <p data-i18n="mode.planar.text">20 verknotete Graphen. Verschiebe nur die Knoten, bis sich keine zwei Linien mehr kreuzen.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="besonderheiten">
+      <div class="wrap">
+        <h2 data-i18n="features.title">Besonderheiten</h2>
+        <ul class="feature-grid">
+          <li class="feature">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>
+            <h3 data-i18n="feature.music.title">Jede Figur klingt</h3>
+            <p data-i18n="feature.music.text">Jede gezogene Kante spielt einen Akkord, jede Figur ihre eigene Akkordfolge. Jeder Modus hat einen eigenen Klavier-Soundtrack, dezente Effekte und einen „Geschafft“-Klang – Akkorde, Effekte und Soundtrack lassen sich einzeln schalten.</p>
+          </li>
+          <li class="feature">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+            <h3 data-i18n="feature.worlds.title">Lebendige Welten</h3>
+            <p data-i18n="feature.worlds.text">Eine Stadt aus „Haus vom Nikolaus“-Hochhäusern am Abend, Dörfer und Blumenwiesen bei Sonnenaufgang und ein langsamer Wechsel von Tag und Nacht mit Tiefenwirkung.</p>
+          </li>
+          <li class="feature">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+            <h3 data-i18n="feature.proven.title">Bewiesene Level</h3>
+            <p data-i18n="feature.proven.text">Jedes Level wird vor dem Spiel mathematisch geprüft: Färben und Entwirren mit einem Solver, die Routen und Rundreisen durch Vollsuche, die Pfadfinder-Felder auf genau eine Lösung. Jedes Level ist lösbar.</p>
+          </li>
+          <li class="feature">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21l3.5-1 11-11-2.5-2.5-11 11z"/><path d="M14 5l2.5-2.5L19 5l-2.5 2.5"/></svg>
+            <h3 data-i18n="feature.input.title">Finger, Stift, Maus</h3>
+            <p data-i18n="feature.input.text">Für Finger, Apple Pencil, Maus und Tastatur. Fortschritt, Bestzeiten und angefangene Züge werden gespeichert.</p>
+          </li>
+          <li class="feature">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>
+            <h3 data-i18n="feature.language.title">Deutsch und Englisch</h3>
+            <p data-i18n="feature.language.text">Das ganze Spiel gibt es auf Deutsch und Englisch.</p>
+          </li>
+          <li class="feature">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/></svg>
+            <h3 data-i18n="feature.calm.title">Ruhig und fair</h3>
+            <p data-i18n="feature.calm.text">Ohne Zeitlimit: Zurück kostet fünf Sekunden auf der Uhr, ein Tipp dreißig – und jeder Neustart behält deine Bestzeit.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-row">
+      <div class="brand">
+        <img src="assets/img/favicon-64.png" width="28" height="28" alt="">
+        <span>Linienzauber</span>
+      </div>
+      <p data-i18n="footer.credit">Ein Spiel von Stefan Opfermann · © Stefan Opfermann 2026</p>
+      <p class="quiet" data-i18n="footer.privacy">Diese Seite setzt keine Cookies und lädt nichts von fremden Servern.</p>
+    </div>
+  </footer>
+
+  <script src="i18n.js"></script>
+</body>
+</html>

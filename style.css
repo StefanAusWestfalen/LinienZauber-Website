@@ -1,0 +1,208 @@
+/* Linienzauber one-pager: the game's neon look – night blue, glass tubes, cyan, magenta, gold and green. */
+
+@font-face { font-family: "Roboto"; src: url("assets/fonts/Roboto-Regular.ttf") format("truetype"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Roboto"; src: url("assets/fonts/Roboto-Medium.ttf") format("truetype"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Roboto"; src: url("assets/fonts/Roboto-Bold.ttf") format("truetype"); font-weight: 700; font-display: swap; }
+
+:root {
+  color-scheme: dark;
+  --bg: #070a16;
+  --bg-2: #0e1433;
+  --panel: rgba(18, 25, 58, 0.72);
+  --panel-edge: rgba(126, 160, 255, 0.18);
+  --text: #e9edff;
+  --muted: #a3acd2;
+  --cyan: #40d9ff;
+  --magenta: #ff61bf;
+  --gold: #ffbd47;
+  --green: #8ff26b;
+  --violet: #a98bff;
+  --radius: 18px;
+  --wrap: 1120px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+html.i18n-pending body { visibility: hidden; }
+body {
+  margin: 0;
+  font-family: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 700px at 85% -10%, rgba(169, 139, 255, 0.22), transparent 60%),
+    radial-gradient(900px 600px at -10% 30%, rgba(64, 217, 255, 0.10), transparent 60%),
+    radial-gradient(1000px 700px at 50% 110%, rgba(255, 97, 191, 0.12), transparent 60%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 55%, var(--bg) 100%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--cyan); }
+h1, h2, h3 { line-height: 1.15; margin: 0 0 0.5em; }
+h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); font-weight: 700; letter-spacing: -0.01em; }
+h3 { font-size: 1.2rem; font-weight: 500; }
+p { margin: 0 0 1em; }
+.wrap { width: min(100% - 32px, var(--wrap)); margin-inline: auto; }
+
+.skip-link { position: absolute; left: 16px; top: -60px; z-index: 20; padding: 10px 14px; border-radius: 10px; background: var(--cyan); color: var(--bg); font-weight: 500; }
+.skip-link:focus { top: 12px; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
+
+/* Twinkling sky behind everything; two star layers drift at different depths. */
+.sky { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.stars { position: absolute; inset: -200px; background-repeat: repeat; }
+.stars-far {
+  background-image:
+    radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,.55), transparent),
+    radial-gradient(1px 1px at 140px 80px, rgba(255,255,255,.35), transparent),
+    radial-gradient(1px 1px at 90px 160px, rgba(180,220,255,.5), transparent),
+    radial-gradient(1px 1px at 200px 210px, rgba(255,255,255,.3), transparent);
+  background-size: 240px 240px;
+  animation: drift 160s linear infinite;
+}
+.stars-near {
+  background-image:
+    radial-gradient(1.5px 1.5px at 60px 50px, rgba(255,255,255,.8), transparent),
+    radial-gradient(1.5px 1.5px at 250px 190px, rgba(64,217,255,.7), transparent),
+    radial-gradient(2px 2px at 330px 330px, rgba(255,189,71,.6), transparent);
+  background-size: 400px 400px;
+  animation: drift 90s linear infinite, twinkle 6s ease-in-out infinite alternate;
+}
+@keyframes drift { to { transform: translate3d(-240px, 0, 0); } }
+@keyframes twinkle { from { opacity: .55; } to { opacity: 1; } }
+
+/* Header */
+.site-header {
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(7, 10, 22, 0.72);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--panel-edge);
+}
+.header-row { display: flex; align-items: center; gap: 20px; min-height: 64px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-weight: 700; font-size: 1.1rem; }
+.brand img { border-radius: 8px; }
+.site-nav { display: flex; gap: 22px; margin-left: auto; }
+.site-nav a { color: var(--muted); text-decoration: none; font-weight: 500; }
+.site-nav a:hover { color: var(--text); }
+.lang-switch { display: inline-flex; padding: 3px; border-radius: 999px; background: rgba(255,255,255,.06); border: 1px solid var(--panel-edge); }
+.lang-switch button {
+  font: inherit; font-size: .85rem; font-weight: 500; letter-spacing: .04em;
+  color: var(--muted); background: none; border: 0; border-radius: 999px; padding: 4px 12px; cursor: pointer;
+}
+.lang-switch button[aria-pressed="true"] { color: var(--bg); background: var(--cyan); box-shadow: 0 0 14px rgba(64,217,255,.55); }
+
+/* Hero */
+.hero { padding: clamp(40px, 8vw, 96px) 0 32px; }
+.hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; align-items: center; gap: 40px; }
+.eyebrow { color: var(--cyan); font-weight: 500; letter-spacing: .08em; text-transform: uppercase; font-size: .85rem; margin-bottom: .6em; }
+.hero h1 {
+  font-size: clamp(3rem, 9vw, 5.6rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: .15em;
+  background: linear-gradient(100deg, #ffffff 10%, var(--cyan) 55%, var(--violet) 95%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 0 24px rgba(64,217,255,.25));
+}
+/* English only: the name's meaning under the German brand. */
+.alias { margin: -0.1em 0 0.7em; color: var(--magenta); font-weight: 500; font-size: clamp(1rem, 1.8vw, 1.2rem); letter-spacing: 0.32em; text-transform: uppercase; text-shadow: 0 0 18px rgba(255, 97, 191, 0.55); }
+.alias:empty { display: none; }
+.tagline { font-size: clamp(1.3rem, 2.6vw, 1.75rem); font-weight: 500; margin-bottom: .2em; }
+.lead { color: var(--muted); font-size: 1.15rem; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.button {
+  display: inline-flex; align-items: center; padding: 12px 22px; border-radius: 999px;
+  border: 1px solid var(--panel-edge); color: var(--text); text-decoration: none; font-weight: 500;
+  background: rgba(255,255,255,.05); transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.button:hover { transform: translateY(-1px); background: rgba(255,255,255,.09); }
+.button.primary { color: var(--bg); background: var(--cyan); border-color: transparent; box-shadow: 0 0 28px rgba(64,217,255,.45); }
+.button.primary:hover { background: #6fe3ff; }
+
+/* The house of Santa Claus, drawn in one stroke */
+.house { margin: 0; padding: 22px; border-radius: 28px; background: var(--panel); border: 1px solid var(--panel-edge); box-shadow: 0 30px 80px rgba(0,0,0,.45), inset 0 0 60px rgba(64,217,255,.06); }
+.house svg { width: 100%; height: auto; display: block; }
+.house .tube { fill: none; stroke: rgba(150, 175, 230, 0.20); stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; }
+.house .trail { fill: none; stroke: var(--cyan); stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 100; stroke-dashoffset: 100; animation: draw 10s linear infinite; }
+.house .nodes circle { fill: var(--bg); stroke: var(--cyan); stroke-width: 3; }
+.house .head {
+  fill: var(--gold);
+  offset-path: path("M50 200 L50 100 L120 35 L190 100 L50 100 L190 200 L190 100 L50 200 L190 200");
+  offset-rotate: 0deg; animation: head 10s linear infinite;
+}
+.house figcaption { text-align: center; color: var(--muted); font-size: .95rem; margin-top: 10px; }
+@keyframes draw {
+  0% { stroke-dashoffset: 100; opacity: 1; }
+  72% { stroke-dashoffset: 0; opacity: 1; }
+  90% { stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+@keyframes head {
+  0% { offset-distance: 0%; opacity: 1; }
+  72% { offset-distance: 100%; opacity: 1; }
+  90% { offset-distance: 100%; opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+
+/* Screenshots in a glowing glass frame */
+.shot { margin: 0; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--panel-edge); box-shadow: 0 30px 80px rgba(0,0,0,.5), 0 0 0 6px rgba(255,255,255,.03); background: var(--bg); }
+.hero-shot { margin-top: clamp(40px, 6vw, 72px); }
+
+/* About */
+.about { padding: clamp(56px, 8vw, 104px) 0; }
+.about-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: center; }
+.about p { color: var(--muted); font-size: 1.1rem; }
+.facts { list-style: none; padding: 0; margin: 28px 0 0; display: flex; flex-wrap: wrap; gap: 14px; }
+.facts li { padding: 12px 18px; border-radius: 14px; background: var(--panel); border: 1px solid var(--panel-edge); color: var(--muted); }
+.facts strong { display: block; font-size: 1.9rem; line-height: 1.1; color: var(--text); }
+
+/* Modes */
+.modes { padding: clamp(40px, 6vw, 80px) 0; }
+.section-lead { color: var(--muted); font-size: 1.1rem; max-width: 46em; margin-bottom: 36px; }
+.mode-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.mode {
+  border-radius: var(--radius); overflow: hidden; background: var(--panel); border: 1px solid var(--panel-edge);
+  box-shadow: 0 20px 60px rgba(0,0,0,.35); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.mode:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--accent) 55%, transparent); box-shadow: 0 24px 70px rgba(0,0,0,.45), 0 0 34px color-mix(in srgb, var(--accent) 22%, transparent); }
+.mode img { border-bottom: 2px solid var(--accent); }
+.mode-body { padding: 20px 24px 24px; }
+.mode h3 { color: var(--accent); font-size: 1.35rem; text-shadow: 0 0 18px color-mix(in srgb, var(--accent) 45%, transparent); }
+.mode p { color: var(--muted); margin: 0; }
+
+/* Features */
+.features { padding: clamp(56px, 8vw, 104px) 0; }
+.feature-grid { list-style: none; padding: 0; margin: 36px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.feature { padding: 24px; border-radius: var(--radius); background: var(--panel); border: 1px solid var(--panel-edge); }
+.feature svg { width: 34px; height: 34px; fill: none; stroke: var(--cyan); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 8px rgba(64,217,255,.55)); margin-bottom: 14px; }
+.feature:nth-child(3n+2) svg { stroke: var(--magenta); filter: drop-shadow(0 0 8px rgba(255,97,191,.5)); }
+.feature:nth-child(3n) svg { stroke: var(--gold); filter: drop-shadow(0 0 8px rgba(255,189,71,.5)); }
+.feature p { color: var(--muted); margin: 0; }
+
+/* Footer */
+.site-footer { border-top: 1px solid var(--panel-edge); padding: 32px 0 40px; background: rgba(7,10,22,.6); }
+.footer-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; }
+.footer-row p { margin: 0; color: var(--muted); }
+.footer-row .quiet { font-size: .9rem; opacity: .8; margin-left: auto; }
+
+/* Tablet and phone */
+@media (max-width: 900px) {
+  .hero-grid, .about-grid { grid-template-columns: 1fr; }
+  .house { max-width: 420px; justify-self: center; width: 100%; }
+  .feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .site-nav { display: none; }
+  .lang-switch { margin-left: auto; }
+  .mode-grid, .feature-grid { grid-template-columns: 1fr; }
+  .footer-row .quiet { margin-left: 0; }
+}
+
+/* Motion only for those who want it: the house is shown fully drawn. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .stars, .house .trail, .house .head { animation: none; }
+  .house .trail { stroke-dashoffset: 0; }
+  .house .head { display: none; }
+  .mode, .button { transition: none; }
+}

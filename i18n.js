@@ -14,6 +14,7 @@
     'nav.modes': 'Game modes',
     'nav.features': 'Highlights',
     'nav.privacy': 'Privacy',
+    'nav.legal': 'Privacy & legal notice',
     'nav.privacyUrl': 'privacy.html',
     'hero.eyebrow': 'A puzzle game for Mac, iPhone and iPad',
     // The brand stays German everywhere; English visitors see what it means.

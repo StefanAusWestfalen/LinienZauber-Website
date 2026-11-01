@@ -223,6 +223,9 @@ p { margin: 0 0 1em; }
 .site-header { border-bottom: 1px solid var(--panel-edge); padding: 14px 0; }
 .header-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .header-row .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-weight: 600; }
-.site-header .site-nav { display: flex; gap: 18px; }
+.site-header .site-nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
 .site-header .site-nav a { color: var(--muted); text-decoration: none; }
 .site-header .site-nav a:hover { color: var(--text); }
+
+/* Anchors land below the sticky header. */
+section[id] { scroll-margin-top: 150px; }

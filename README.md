@@ -9,6 +9,7 @@ Ein statischer One-Pager auf Deutsch und Englisch: reines HTML, CSS und ein klei
 | `style.css` | Neon-Look des Spiels: Nachtblau, Glasröhren, Cyan, Magenta, Gold, Grün |
 | `assets/img` | App-Icon und zehn iPad-Screenshots (1200 × 824): Intro, Modus-Auswahl mit allen acht Karten und je ein Bild der Modi (aus der iPad-Tour `IPadTourTests`, um 90° gedreht und verkleinert) |
 | `assets/fonts` | Roboto Regular, Medium, Bold mit `OFL.txt` |
+| `assets/img/badge-*.svg` | Apples offizielle Badges „Laden im App Store“ und „Laden im Mac App Store“, deutsch und englisch, unverändert aus Apples Marketing-Toolbox; sie verlinken die App im App Store (`apps.apple.com/app/id6828840327`, für den Mac mit `?platform=mac`) |
 
 ## Sprache
 

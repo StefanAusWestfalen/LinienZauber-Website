@@ -23,7 +23,10 @@
     'hero.lead': 'Experience graph theory through play.',
     'hero.cta': 'Discover the game modes',
     'hero.more': 'What makes it special',
-    'hero.testflight': 'Try it in TestFlight',
+    'store.iosBadge': 'assets/img/badge-app-store-en.svg',
+    'store.iosAlt': 'Download on the App Store',
+    'store.macBadge': 'assets/img/badge-mac-app-store-en.svg',
+    'store.macAlt': 'Download on the Mac App Store',
     'hero.animation': 'The house of Santa Claus is drawn in a single stroke',
     'hero.caption': 'The house of Santa Claus – eight edges, one stroke.',
     'shot.intro': 'LinienZauber title screen: a glowing figure above an evening city of towers shaped like the house of Santa Claus, with a full moon',
@@ -87,7 +90,7 @@
     'scoring.rewards.text': 'There are 20 achievements: for the first level of each mode, for all levels of a mode, for 10, 50 and 100 levels and for the whole game.',
     'scoring.boards.title': 'Leaderboards',
     'scoring.boards.text': 'With Game Center your points per mode go on a leaderboard, as do the daily puzzle and the 5-puzzle run. Without Game Center everything counts the same, and you see it under Progress.',
-    'footer.credit': 'A game by Stefan Opfermann · © Stefan Opfermann 2026 · Updated 1 Nov 2026, 18:44 CET',
+    'footer.credit': 'A game by Stefan Opfermann · © Stefan Opfermann 2026 · Updated 16 Nov 2026, 19:00 CET',
     'footer.privacy': 'This page sets no cookies and loads nothing from other servers.'
   };
 

@@ -5,8 +5,8 @@
   'use strict';
 
   var english = {
-    'meta.title': 'LinienZauber (Line Magic) – Experience graph theory through play',
-    'meta.description': 'LinienZauber is a calm puzzle game for Mac, iPhone and iPad: Euler trails, Hamilton paths, shortest paths, Steiner trees, the travelling salesman, pathfinder, colouring and planar graphs in glowing neon worlds.',
+    'meta.title': 'LinienZauber (Line Magic) – One-line puzzles: 338 figures in one stroke',
+    'meta.description': 'Draw the house and 337 more figures in one stroke: a calm brain teaser for Mac, iPhone and iPad with eight puzzle modes from graph theory. Free, no ads.',
     'meta.og': 'Every edge. One stroke. Your path. Experience graph theory through play.',
     'nav.skip': 'Skip to content',
     'nav.label': 'Main navigation',

@@ -47,7 +47,7 @@
     'modes.title': 'Eight game modes',
     'modes.lead': 'Eight kinds of puzzles from graph theory, each with its own world, its own music and its own figure overview.',
     'mode.euler.title': 'Euler trails',
-    'mode.euler.text': '56 figures in four worlds: Classics, Advanced, Star paths and Connections. Use every edge exactly once. Crossings are not nodes, and LinienZauber warns you before you walk into a dead end.',
+    'mode.euler.text': '58 figures in four worlds: Classics, Advanced, Star paths and Connections. Use every edge exactly once. Crossings are not nodes, and LinienZauber warns you before you walk into a dead end.',
     'mode.paths.title': 'Shortest paths',
     'mode.paths.text': '40 road maps like a route planner, the second half on real German regions from the Ruhr to Thuringia: a road is as long as it is drawn. Plan the shortest route from S to Z, with stops on the way and around roadworks – with haptics, horn and engine sounds.',
     'mode.hamilton.title': 'Hamilton paths',
